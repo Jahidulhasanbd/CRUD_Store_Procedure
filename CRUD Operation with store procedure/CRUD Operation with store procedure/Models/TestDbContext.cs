@@ -57,11 +57,11 @@ public partial class TestDbContext : DbContext
         SqlParameter pId = new SqlParameter("@id", customer.CustomerId);
         SqlParameter pName = new SqlParameter("@name", customer.Name);
         SqlParameter pCountry = new SqlParameter("@country", customer.Country);
-        this.Database.ExecuteSqlRaw("EXEC spUpdateCustomer @pId,@pName,@pCountry", pId, pName, pCountry);
+        this.Database.ExecuteSqlRaw("EXEC spUpdateCustomer @id,@name,@country", pId, pName, pCountry);
     }
     public void DeleteCustomer(int id)
     {
         SqlParameter pId=new SqlParameter("@id", id);
-        this.Database.ExecuteSqlRaw("EXEC spDeleteCustomer @id", id);
+        this.Database.ExecuteSqlRaw("EXEC spDeleteCustomer @id", pId);
     }
 }
